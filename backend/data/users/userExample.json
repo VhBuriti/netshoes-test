@@ -1,0 +1,20 @@
+{
+    "userData": {
+        "_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+        "name": "Victor Silva",
+        "email": "victor.teste@hotmail.com",
+        "phone": "+55 (11) 91234-5678",
+        "address": {
+            "street": "Av. Paulista",
+            "number": "1000",
+            "city": "São Paulo",
+            "state": "SP",
+            "zipCode": "01310-100"
+        },
+        "wishlist": {
+            "products": [
+                "D22-2077-006"
+            ]
+        }
+    }
+}
