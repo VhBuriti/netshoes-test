@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
-
 @mixin desktop {
   @media (min-width: 64rem) {
     @content;
@@ -12,16 +10,20 @@
   }
 }
 
-@mixin font($font-size: "",
+@mixin font(
+  $font-size: "",
   $line-height: "",
   $font-weight: "",
-  $letter-spacing: ""
+  $letter-spacing: "",
+  $color: ""
 
 ) {
   font-size: $font-size;
   line-height: $line-height;
   font-weight: $font-weight;
   letter-spacing: $letter-spacing;
+  color: $color;
   font-family: "Source Sans 3", sans-serif;
+  text-decoration: none;
 }
 

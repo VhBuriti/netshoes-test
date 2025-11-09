@@ -1,0 +1,96 @@
+@import "../../../sass/scaffold";
+
+.header {
+  background-color: $header-background-color;
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: $white-text-color;
+  position: relative;
+  justify-content: center;
+
+
+  @include tablet {
+    padding: 16px 64px;
+    justify-content: space-between;
+  }
+
+  [data-icon-button] {
+    color: $white-text-color;
+  }
+
+  [data-hamburguer-button] {
+    position: absolute;
+    left: 16px;
+  }
+
+  [data-desktop-dropdown] {
+    position: absolute;
+    padding: inherit;
+    right: 0;
+    bottom: 0;
+    top: 18px;
+    [ data-header-options-menu] {
+      [data-header-options-list] {
+        list-style-type: none;
+        background-color: $base-background-color;
+        padding: 8px;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        @include font(15px, 20px, 400, 0, $darker-text-color);
+      }
+    }
+  }
+
+  [data-slider] {
+    [data-header-options-list] {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      padding: 16px 0;
+      [data-header-options-item] {
+        padding: 12px;
+        border-bottom: 1px solid $lighter-border-color;
+        @include font(16px, 24px, 400, 0, $dark-text-color);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+      }
+    }
+  }
+
+  [data-header-options] {
+    display: none;
+    color: $white-text-color;
+    gap: 64px;
+
+    @include tablet {
+      display: flex;
+    }
+
+    [data-profile-icon] {
+      width: 32px;
+      height: 32px;
+      margin-left: 8px;
+    }
+
+    [data-icon-button] {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      @include font(16px, 24px, 600, 0, $white-text-color);
+
+      [data-wishlist-icon] {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
