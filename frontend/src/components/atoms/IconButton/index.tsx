@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.scss";
 
 type Props = {
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   icon: React.ReactNode;
 };

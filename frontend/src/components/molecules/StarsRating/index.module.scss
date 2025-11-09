@@ -1,0 +1,16 @@
+@import "../../../sass/scaffold";
+
+.ratingStars {
+  display: flex;
+  align-items: flex-start;
+
+  [data-star-wrapper] {
+    width: 16px;
+    height: 16px;
+  }
+
+  [data-rating] {
+    @include font(14px, 20px, 500, 0, $darker-text-color);
+    margin-left: 4px;
+  }
+}
