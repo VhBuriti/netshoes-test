@@ -1,12 +1,11 @@
 import ProductGrid from "../../organisms/ProductGrid";
 import { useWishlistContext } from "../../../context/WishlistContext";
-import styles from "./index.module.scss"
 
 function WishlistPage() {
   const { wishlist, isInWishlist, toggleWishlist } = useWishlistContext();
 
   return (
-    <section className={styles.wishlistPage}>
+    <section>
       <ProductGrid
         products={wishlist}
         isInWishlist={isInWishlist}
