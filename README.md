@@ -74,3 +74,54 @@ Inside the frontend terminal:
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Routes (Back-end)
+
+
+### Wishlist
+
+`:id` = User Id
+
+#### Get Wishlist (Product Codes)
+```
+GET http://localhost:8080/wishlist/:id
+```
+Returns:  
+`{ codes: [productCode1, productCode2, ...] }`
+
+
+#### Get Full Wishlist (Product Details)
+```
+GET http://localhost:8080/wishlist/:id/full
+```
+Returns:  
+`{ wishlist: [ProductObject, ...] }`
+
+
+#### Add Product to Wishlist
+```
+POST http://localhost:8080/wishlist/:id/add
+Body: { "productId": "PRODUCT_CODE" }
+```
+Returns updated wishlist:  
+`{ wishlist: [ProductObject, ...] }`
+
+
+#### Remove Product from Wishlist
+```
+DELETE http://localhost:8080/wishlist/:id/remove/:productId
+```
+Returns updated wishlist:  
+`{ wishlist: [ProductObject, ...] }`
+
+
+### Products
+
+#### Get All Products or by Codes
+```
+GET http://localhost:8080/products
+GET http://localhost:8080/products?codes=CODE1,CODE2
+```
+
+Returns matching products as an array.
