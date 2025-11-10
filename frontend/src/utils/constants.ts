@@ -1,4 +1,6 @@
-const api = 'http://localhost:8080';
-const userId = "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d";
+const configs = {
+    api: "http://localhost:8080",
+    userId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+}
 
-export { api, userId };
+export { configs };

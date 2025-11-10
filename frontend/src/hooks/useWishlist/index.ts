@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { api } from "../../utils/constants";
+import { configs } from "../../utils/constants";
 
 export default function useWishlist(userId: string) {
   const [wishlist, setWishlist] = useState<Product[]>([]);
@@ -11,7 +11,7 @@ export default function useWishlist(userId: string) {
 
     async function fetchWishlist() {
       try {
-        const response = await fetch(`${api}/wishlist/${userId}/full`);
+        const response = await fetch(`${configs.api}/wishlist/${userId}/full`);
         if (!response.ok) throw new Error("Failed to fetch wishlist");
         const data = await response.json();
         setWishlist(data.wishlist || []);
@@ -27,7 +27,7 @@ export default function useWishlist(userId: string) {
 
   const addToWishlist = useCallback(async (productId: string) => {
     try {
-      const res = await fetch(`${api}/wishlist/${userId}/add`, {
+      const res = await fetch(`${configs.api}/wishlist/${userId}/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId }),
@@ -44,7 +44,7 @@ export default function useWishlist(userId: string) {
 
   const removeFromWishlist = useCallback(async (productId: string) => {
     try {
-      const res = await fetch(`${api}/wishlist/${userId}/remove/${productId}`, {
+      const res = await fetch(`${configs.api}/wishlist/${userId}/remove/${productId}`, {
         method: "DELETE",
       });
 
