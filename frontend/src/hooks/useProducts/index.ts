@@ -19,7 +19,7 @@ export default function useProducts() {
         const response = await fetch(`${configs.api}/products`);
         if (!response.ok) throw new Error('Failed to fetch products');
         const data = await response.json();
-        setProducts(data[0] || []);
+        setProducts(data || []);
       } catch (err: any) {
         setError(err.message);
       } finally {

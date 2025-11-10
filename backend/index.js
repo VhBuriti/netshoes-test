@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { connectToMongoDB } from "./config/mongo.js";
+// import { connectToMongoDB } from "./config/mongo.js";
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import wishlistRoutes from './routes/wishlistRoutes.js';
@@ -11,7 +11,7 @@ const port = 8080;
 app.use(cors());
 app.use(express.json());
 
-await connectToMongoDB();
+// await connectToMongoDB();
 
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);

@@ -1,38 +1,28 @@
 import express from "express";
-import { getConnectedClient } from "../config/mongo.js";
+import fs from "fs";
+import path from "path";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+const dataPath = path.resolve("data/products/mock-products.json");
+
+router.get("/", (req, res) => {
   try {
     const { codes } = req.query;
-    const client = getConnectedClient();
-    const db = client.db("data");
-    const collection = db.collection("products");
+    const products = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
-    if (!codes) {
-      const allProducts = await collection.find().toArray();
-      if (!allProducts.length)
-        return res.status(404).json({ message: "No products found" });
-      return res.json(allProducts);
-    }
+    if (!codes) return res.json(products);
 
     const codeList = codes.split(",").map((c) => c.trim());
-    const result = await collection
-      .find({ "products.code": { $in: codeList } })
-      .toArray();
+    const filtered = products.filter((p) => codeList.includes(p.code));
 
-    if (!result.length)
+    if (!filtered.length)
       return res.status(404).json({ message: "No products found for given codes" });
 
-    const matchedProducts = result.flatMap((doc) =>
-      doc.products.filter((p) => codeList.includes(String(p.code)))
-    );
-
-    res.json(matchedProducts);
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.json(filtered);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error loading local data" });
   }
 });
 

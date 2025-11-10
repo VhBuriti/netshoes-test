@@ -1,39 +1,34 @@
 import express from "express";
-import { getConnectedClient } from "../config/mongo.js";
+import fs from "fs";
+import path from "path";
 
 const router = express.Router();
 
-router.get("/:id", async (req, res) => {
+const dataPath = path.resolve("data/users/userExample.json");
+
+router.get("/:id", (req, res) => {
   try {
-    const userId = req.params.id;
-    const client = getConnectedClient();
-    const db = client.db("data");
-    const users = db.collection("users");
+    const user = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+    if (user.userData._id !== req.params.id)
+      return res.status(404).json({ message: "User not found" });
 
-    const userData = await users.findOne({ "userData._id": userId });
-    if (!userData) return res.status(404).json({ message: "User not found" });
-
-    res.json(userData);
-  } catch (error) {
-    console.error("Error fetching user data:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error loading local user data" });
   }
 });
 
-router.get("/:id/wishlist", async (req, res) => {
+router.get("/:id/wishlist", (req, res) => {
   try {
-    const userId = req.params.id;
-    const client = getConnectedClient();
-    const db = client.db("data");
-    const users = db.collection("users");
+    const user = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+    if (user.userData._id !== req.params.id)
+      return res.status(404).json({ message: "User not found" });
 
-    const userData = await users.findOne({ "userData._id": userId });
-    if (!userData) return res.status(404).json({ message: "User not found" });
-
-    res.json(userData.userData.wishlist);
-  } catch (error) {
-    console.error("Error fetching wishlist:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.json(user.userData.wishlist);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error loading local wishlist" });
   }
 });
 
