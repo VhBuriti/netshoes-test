@@ -6,7 +6,7 @@ interface StarRatingProps {
   rating: number;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
+function StarRating({ rating }: StarRatingProps) {
   rating = Math.round(rating * 2) / 2;
 
   const renderStar = useCallback(
@@ -41,6 +41,6 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
       {stars} <span data-rating>{rating}</span>
     </div>
   );
-};
+}
 
 export default memo(StarRating);

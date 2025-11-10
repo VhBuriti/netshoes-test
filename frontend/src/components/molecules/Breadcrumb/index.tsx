@@ -16,6 +16,7 @@ export default function Breadcrumb() {
       <li
         key={currentLink}
         data-breadcrumb-item
+        data-testid="breadcrumb-item"
         data-current={isCurrent ? "true" : "false"}
       >
         <a
@@ -34,6 +35,7 @@ export default function Breadcrumb() {
       <ul data-breadcrumb-list>
         <li
           data-breadcrumb-item
+          data-testid="breadcrumb-item"
           data-current={pathname === "/" ? "true" : "false"}
         >
           <a
