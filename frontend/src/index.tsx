@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/organisms/Header";
 import Breadcrumb from "./components/molecules/Breadcrumb";
@@ -13,16 +12,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <Header />
-      <WishlistProvider>
-        
-        <Breadcrumb />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/wishlist" element={<WishlistPage />} />
-        </Routes>
-      </WishlistProvider>
-    </React.StrictMode>
+    <Header />
+    <WishlistProvider>
+      <Breadcrumb />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
+      </Routes>
+    </WishlistProvider>
   </BrowserRouter>
 );

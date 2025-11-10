@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { CloseIcon } from "../../../assets";
 import styles from "./index.module.scss";
 
@@ -8,7 +8,7 @@ interface SliderProps {
   children?: React.ReactNode;
 }
 
-export default function Slider({ sliderTitle, closeSlider, children }: SliderProps) {
+function Slider({ sliderTitle, closeSlider, children }: SliderProps) {
   return (
     <div className={styles.sliderOverlay} data-slider-overlay>
       <div data-slider>
@@ -21,3 +21,5 @@ export default function Slider({ sliderTitle, closeSlider, children }: SliderPro
     </div>
   );
 }
+
+export default memo(Slider)

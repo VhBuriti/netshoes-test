@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { api } from '../../utils/constants';
 
 interface Response {
   total: number;
@@ -15,7 +16,7 @@ export default function useProducts() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch('http://localhost:8080/products');
+        const response = await fetch(`${api}/products`);
         if (!response.ok) throw new Error('Failed to fetch products');
         const data = await response.json();
         setProducts(data[0] || []);

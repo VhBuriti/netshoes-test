@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 interface IconLinkProps {
   icon: React.ReactNode;
   link?: string;
@@ -14,4 +16,4 @@ function IconLink({ icon, link, altText, text, ...props }: IconLinkProps) {
   );
 }
 
-export default IconLink;
+export default memo(IconLink);

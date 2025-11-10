@@ -1,52 +1,58 @@
 @import "../../../sass/scaffold";
 
 .productCard {
-    width: fit-content;
-    max-width: 100%;
-    box-shadow: 5px 5px 8px 3px $dark-border-color;
-    [data-product-image-wrapper] {
-        position: relative;
-        [data-product-wishlist] {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background-color: $interactive-background-color;
-            color: $white-text-color;
-            padding: 4px;
-            box-sizing: content-box;
-            border-radius: 50%;
-            svg {
-                width: 16px;
-                height: 16px;
-            }
-            &:hover {
-                background-color: $hover-wishlist-background-color;
-            }
-        }
-        [data-product-image] {
-            width: 100%;
-            object-fit: contain;
-        }
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: 5px 5px 8px 3px $dark-border-color;
+
+  [data-product-image-wrapper] {
+    position: relative;
+    [data-product-wishlist] {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: $interactive-background-color;
+      color: $white-text-color;
+      padding: 4px;
+      box-sizing: content-box;
+      border-radius: 50%;
+      &[data-iswishlisted="true"] {
+        background-color: $hover-wishlist-background-color;
+      }
+      &[data-iswishlist-page="true"] {
+        background-color: transparent;
+        color: $dark-text-color;
+      }
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+      &:hover {
+        background-color: $hover-wishlist-background-color;
+      }
     }
-    [data-product-info] {
-        display: flex;
-        flex-direction: column;
-        padding: 0 8px 8px;
+    [data-product-image] {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  [data-product-info] {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px 8px;
 
-        [data-product-name] {
-            @include font(14px, 20px, 400, 0, $darker-text-color);
-        }
-
-        [data-product-pricing] {
-            [data-product-original-price] {
-                @include font(13px, 16px, 400, 0, $light-text-color);
-                text-decoration: line-through;
-            }
-            [data-product-discounted-price] {
-                @include font(16px, 24px, 600, 0, $dark-feature-text-color);
-            }
-
-        }
+    [data-product-name] {
+      @include font(14px, 20px, 400, 0, $darker-text-color);
     }
 
+    [data-product-pricing] {
+      [data-product-original-price] {
+        @include font(13px, 16px, 400, 0, $light-text-color);
+        text-decoration: line-through;
+      }
+      [data-product-discounted-price] {
+        @include font(16px, 24px, 600, 0, $dark-feature-text-color);
+      }
+    }
+  }
 }

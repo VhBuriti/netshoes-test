@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./index.module.scss";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
   active?: boolean;
 };
 
-export default function IconButton({
+function IconButton({
   onClick,
   icon,
   active,
@@ -28,3 +28,5 @@ export default function IconButton({
     </button>
   );
 }
+
+export default memo(IconButton)

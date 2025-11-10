@@ -2,18 +2,20 @@ import styles from "./index.module.scss";
 import { CloseIcon, WishlistIcon } from "../../../assets";
 import IconButton from "../../atoms/IconButton";
 import StarsRating from "../../molecules/StarsRating";
-import { useMemo } from "react";
+import { memo } from "react";
 
 interface ProductCardProps {
   product: Product;
   isWishListed: boolean;
   onToggleWishlist: (code: string) => void;
+  pageType?: "home" | "wishlist";
 }
 
-export default function ProductCard({
+function ProductCard({
   product,
   isWishListed,
-  onToggleWishlist
+  onToggleWishlist,
+  pageType = "home",
 }: ProductCardProps) {
   const {
     name,
@@ -22,8 +24,16 @@ export default function ProductCard({
     priceInCents,
     salePriceInCents,
     details,
-    code
+    code,
+    available,
+    visible,
   } = product;
+
+  if (!available || !visible) {
+    return null;
+  }
+
+  const displayRemoveBtn = isWishListed && pageType !== "home";
 
   const formatPrice = (price: string) =>
     `R$ ${(Number(price) / 100).toFixed(2).replace(".", ",")}`;
@@ -34,8 +44,10 @@ export default function ProductCard({
         <img data-product-image src={image} alt={details?.name || name} />
         <IconButton
           data-product-wishlist
-          icon={isWishListed ? <CloseIcon /> : <WishlistIcon />}
+          icon={displayRemoveBtn ? <CloseIcon /> : <WishlistIcon />}
           onClick={() => onToggleWishlist(code)}
+          data-iswishlisted={isWishListed}
+          data-iswishlist-page={displayRemoveBtn}
         />
       </div>
 
@@ -54,3 +66,5 @@ export default function ProductCard({
     </div>
   );
 }
+
+export default memo(ProductCard)

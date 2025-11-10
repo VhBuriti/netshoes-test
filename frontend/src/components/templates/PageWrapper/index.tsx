@@ -5,6 +5,8 @@ interface PageWrapperProps {
   children: React.ReactNode;
 }
 
-export default function PageWrapper({ children }: PageWrapperProps) {
+function PageWrapper({ children }: PageWrapperProps) {
   return <main className={styles.pageWrapper}>{children}</main>;
 }
+
+export default PageWrapper
