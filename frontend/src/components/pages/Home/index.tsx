@@ -1,6 +1,6 @@
 import ProductGrid from "../../organisms/ProductGrid";
-import { useWishlistContext } from "../../../context/WishlistContext";
 import useProducts from "../../../hooks/useProducts";
+import { useWishlistContext } from "../../../context/WishlistContext";
 
 export default function HomePage() {
   const { products } = useProducts();

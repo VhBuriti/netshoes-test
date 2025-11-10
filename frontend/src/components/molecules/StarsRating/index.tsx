@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from "react";
-import styles from "./index.module.scss";
 import { FullStarIcon, HalfStarIcon, EmptyStarIcon } from "../../../assets";
+import styles from "./index.module.scss";
 
 interface StarRatingProps {
   rating: number;

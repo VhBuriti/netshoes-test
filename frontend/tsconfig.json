@@ -22,6 +22,6 @@
   },
   "include": [
     "src",
-    "src/types/global.d.ts"
+    "src/types/configs.d.ts"
   ]
 }

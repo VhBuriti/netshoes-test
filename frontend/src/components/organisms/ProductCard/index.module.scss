@@ -27,7 +27,7 @@
         width: 16px;
         height: 16px;
       }
-      &:hover {
+      &:not([data-iswishlist-page="true"]):hover {
         background-color: $hover-wishlist-background-color;
       }
     }

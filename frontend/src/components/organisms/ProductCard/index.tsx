@@ -1,8 +1,8 @@
-import styles from "./index.module.scss";
-import { CloseIcon, WishlistIcon } from "../../../assets";
+import { memo } from "react";
 import IconButton from "../../atoms/IconButton";
 import StarsRating from "../../molecules/StarsRating";
-import { memo } from "react";
+import { CloseIcon, WishlistIcon } from "../../../assets";
+import styles from "./index.module.scss";
 
 interface ProductCardProps {
   product: Product;
