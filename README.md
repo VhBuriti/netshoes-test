@@ -46,7 +46,11 @@ For this project, you will need npm for the back-end and yarn for the front-end
    ```sh
     cd backend && npm install && cd ../frontend && yarn
    ```
-3. Create a mongodb account (if you don't have one), create a new database, called data, where you will have two collections, one is called products, where you will pasted the data/products/mock-products.json (base products) and another collection called users, where you will paste the data/users/userExample.js.
+3. Create a [mongodb account](https://www.mongodb.com/) (if you don't have one), create a new database, called data, where you will have two collections, one is called products, where you will pasted the data/products/mock-products.json (base products) and another collection called users, where you will paste the data/users/userExample.js.
+
+    It should loook something like this
+
+    <img src="https://i.ibb.co/xKcxnGFB/print-mongodb.png" alt="mongo db setup guide image"/>
 
 4. With the mongodb connection URL, you need to add it inside a .env file, you may rename the .env-example to do so, where there already is an example of how you should add the value inside.
 
