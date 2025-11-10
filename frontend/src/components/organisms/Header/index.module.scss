@@ -10,7 +10,6 @@
   position: relative;
   justify-content: center;
 
-
   @include tablet {
     padding: 16px 64px;
     justify-content: space-between;
@@ -19,31 +18,49 @@
   [data-icon-button] {
     color: $white-text-color;
   }
+  [data-desktop-profile] {
+    position: relative;
+    display: inline-block;
+
+    [data-desktop-dropdown] {
+      position: absolute;
+      padding: inherit;
+      right: 0;
+      bottom: 0;
+      display: none;
+      width: max-content;
+      top: 18px;
+      [data-header-options-menu] {
+        [data-header-options-list] {
+          list-style-type: none;
+          background-color: $base-background-color;
+          padding: 8px;
+          border-radius: 6px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          [data-header-options-item] {
+            @include font(15px, 20px, 400, 0, $darker-text-color);
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    &:hover,
+    &:focus-within {
+      [data-desktop-dropdown] {
+        display: block;
+      }
+    }
+  }
 
   [data-hamburguer-button] {
     position: absolute;
     left: 16px;
-  }
-
-  [data-desktop-dropdown] {
-    position: absolute;
-    padding: inherit;
-    right: 0;
-    bottom: 0;
-    top: 18px;
-    [ data-header-options-menu] {
-      [data-header-options-list] {
-        list-style-type: none;
-        background-color: $base-background-color;
-        padding: 8px;
-        border-radius: 6px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        @include font(15px, 20px, 400, 0, $darker-text-color);
-      }
-    }
   }
 
   [data-slider] {
@@ -60,7 +77,6 @@
         &:last-child {
           border-bottom: none;
         }
-
       }
     }
   }
@@ -74,10 +90,10 @@
       display: flex;
     }
 
-    [data-profile-icon] {
+    [data-profile-icon],
+    [data-profile-button] {
       width: 32px;
       height: 32px;
-      margin-left: 8px;
     }
 
     [data-icon-button] {

@@ -5,15 +5,25 @@ type Props = {
   onClick?: () => void;
   className?: string;
   icon: React.ReactNode;
+  active?: boolean;
 };
 
 export default function IconButton({
   onClick,
   icon,
+  active,
+  className,
   ...props
 }: Props) {
   return (
-    <button className={styles.iconButton} data-icon-button aria-label="Menu" onClick={onClick} {...props}>
+    <button 
+      className={`${styles.iconButton} ${active ? styles.active : ''} ${className || ''}`}
+      data-icon-button 
+      aria-label="Menu" 
+      onClick={onClick}
+      type="button" 
+      {...props}
+    >
       {icon}
     </button>
   );

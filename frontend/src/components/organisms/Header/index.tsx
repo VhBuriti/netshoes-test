@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./index.module.scss";
 import IconLink from "../../atoms/IconLink";
 import IconButton from "../../atoms/IconButton";
@@ -39,27 +39,23 @@ function Header() {
           text="Wishlist"
         />
 
-        <div
-          data-profile
-          onMouseEnter={!isMobile ? openDropdown : undefined}
-          onMouseLeave={!isMobile ? closeDropdown : undefined}
-        >
-          <ProfileIcon data-profile-icon />
-        </div>
-      </div>
-
-      {isDropdownVisible && (
-        <>
-          {isMobile ? (
-            <Slider closeSlider={closeDropdown} sliderTitle={<Logo />}>
-              <HeaderOptions />
-            </Slider>
-          ) : (
+        <div data-desktop-profile>
+          <IconButton
+            icon={<ProfileIcon data-profile-icon />}
+            data-profile-button
+          />
+          {!isMobile && (
             <div data-desktop-dropdown>
               <HeaderOptions />
             </div>
           )}
-        </>
+        </div>
+      </div>
+
+      {isMobile && isDropdownVisible && (
+        <Slider closeSlider={closeDropdown} sliderTitle={<Logo />}>
+          <HeaderOptions />
+        </Slider>
       )}
     </header>
   );

@@ -1,28 +1,54 @@
 import styles from "./index.module.scss";
-import { WishlistIcon } from "../../../assets";
+import { CloseIcon, WishlistIcon } from "../../../assets";
 import IconButton from "../../atoms/IconButton";
 import StarsRating from "../../molecules/StarsRating";
+import { useMemo } from "react";
 
-export default function ProductCard() {
+interface ProductCardProps {
+  product: Product;
+  isWishListed: boolean;
+  onToggleWishlist: (code: string) => void;
+}
+
+export default function ProductCard({
+  product,
+  isWishListed,
+  onToggleWishlist
+}: ProductCardProps) {
+  const {
+    name,
+    image,
+    rating,
+    priceInCents,
+    salePriceInCents,
+    details,
+    code
+  } = product;
+
+  const formatPrice = (price: string) =>
+    `R$ ${(Number(price) / 100).toFixed(2).replace(".", ",")}`;
+
   return (
     <div className={styles.productCard}>
       <div data-product-image-wrapper>
-        <img
-          data-product-image
-          src="https://static.netshoes.com.br/produtos/kit-3x-colageno-tipo-2-vitaminas-joelho-e-articulacao-60-capsulas-sabor-sem-sabor/14/BKB-0035-014/BKB-0035-014_zoom1.jpg?ts=1713881543?ims=544x"
-          alt=""
+        <img data-product-image src={image} alt={details?.name || name} />
+        <IconButton
+          data-product-wishlist
+          icon={isWishListed ? <CloseIcon /> : <WishlistIcon />}
+          onClick={() => onToggleWishlist(code)}
         />
-        <IconButton data-product-wishlist icon={<WishlistIcon />} />
       </div>
 
       <div data-product-info>
-        <span data-product-name>Tênis Infantil Adidas Runfalcon</span>
+        <span data-product-name>{details?.name || name}</span>
         <div data-product-rating>
-          <StarsRating rating={4.5} />
+          <StarsRating rating={rating} />
         </div>
         <div data-product-pricing>
-          <span data-product-original-price>R$ 249,90</span>
-          <span data-product-discounted-price>R$ 199,90</span>
+          <span data-product-original-price>{formatPrice(priceInCents)}</span>
+          <span data-product-discounted-price>
+            {formatPrice(salePriceInCents)}
+          </span>
         </div>
       </div>
     </div>

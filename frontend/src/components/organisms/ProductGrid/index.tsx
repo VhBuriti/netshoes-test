@@ -1,15 +1,27 @@
-import React from "react";
 import ProductCard from "../ProductCard";
 import styles from "./index.module.scss";
 
-export default function ProductGrid() {
-    const productsQuantity = 12;
-    const ProductGridMock = Array.from({ length: productsQuantity }, (_, i) => (
-        <ProductCard key={i} />
-    ));
-    return (
-        <div className={styles.productGrid} data-product-grid>
-            {ProductGridMock}
-        </div>
-    );
+interface ProductGridProps {
+  products: Product[];
+  isInWishlist: (code: string) => boolean;
+  onToggleWishlist: (code: string) => void;
+}
+
+export default function ProductGrid({
+  products,
+  isInWishlist,
+  onToggleWishlist
+}: ProductGridProps) {
+  return (
+    <div className={styles.productGrid} data-product-grid>
+      {products?.map((product) => (
+        <ProductCard
+          key={product.code}
+          product={product}
+          isWishListed={isInWishlist(product.code)}
+          onToggleWishlist={onToggleWishlist}
+        />
+      ))}
+    </div>
+  );
 }
