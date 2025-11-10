@@ -21,7 +21,7 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <Logo />
+      <IconLink icon={<Logo />} link="/"/>
 
       {isMobile && (
         <IconButton

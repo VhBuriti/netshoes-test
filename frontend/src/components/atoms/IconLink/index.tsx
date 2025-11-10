@@ -2,7 +2,7 @@ import { memo } from "react";
 
 interface IconLinkProps {
   icon: React.ReactNode;
-  link?: string;
+  link: string;
   altText?: string;
   text?: string;
 }
