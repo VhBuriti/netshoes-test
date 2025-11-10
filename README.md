@@ -6,9 +6,7 @@ This project is a technical test for LuizaLabs - Netshoes.
 
 The project contains both a back-end and front-end application, each one in their respective folder.
 
-The project uses MongoDb as it's main database/data storage
-
-> Alternatively, you can run the project locally, using local json files, you just need to change to the **no-db-host branch**
+The project uses local json as it's main database/data storage
 
 ### Built With
 
@@ -17,7 +15,6 @@ The project uses MongoDb as it's main database/data storage
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="32" height="32" />
   <img src="https://img.icons8.com/color/1200/express-js.jpg" alt="Express" width="32" height="32" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="32" height="32" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="32" height="32" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg" width="32" height="32" />
 </p>
 
@@ -48,18 +45,7 @@ For this project, you will need npm for the back-end and yarn for the front-end
    ```sh
     cd backend && npm install && cd ../frontend && yarn
    ```
-3. Create a [mongodb account](https://www.mongodb.com/) (if you don't have one), create a new database, called data, where you will have two collections, one is called products, where you will pasted the backend/data/products/mock-products.json (base products) and another collection called users, where you will paste the backend/data/users/userExample.js.
-
-    It should loook something like this
-
-    <img src="https://i.ibb.co/xKcxnGFB/print-mongodb.png" alt="mongo db setup guide image"/>
-
-4. With the mongodb connection URL, you need to add it inside a .env file, you may rename the .env-example to do so, where there already is an example of how you should add the value inside.
-
-**_You may change the naming as you like, but beware you will need to adjust the backend accordingly._**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+3. Your project setup proccess is done :)
 
 ## Running the project locally
 
@@ -88,3 +74,54 @@ Inside the frontend terminal:
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Routes (Back-end)
+
+
+### Wishlist
+
+`:id` = User Id
+
+#### Get Wishlist (Product Codes)
+```
+GET http://localhost:8080/wishlist/:id
+```
+Returns:  
+`{ codes: [productCode1, productCode2, ...] }`
+
+
+#### Get Full Wishlist (Product Details)
+```
+GET http://localhost:8080/wishlist/:id/full
+```
+Returns:  
+`{ wishlist: [ProductObject, ...] }`
+
+
+#### Add Product to Wishlist
+```
+POST http://localhost:8080/wishlist/:id/add
+Body: { "productId": "PRODUCT_CODE" }
+```
+Returns updated wishlist:  
+`{ wishlist: [ProductObject, ...] }`
+
+
+#### Remove Product from Wishlist
+```
+DELETE http://localhost:8080/wishlist/:id/remove/:productId
+```
+Returns updated wishlist:  
+`{ wishlist: [ProductObject, ...] }`
+
+
+### Products
+
+#### Get All Products or by Codes
+```
+GET http://localhost:8080/products
+GET http://localhost:8080/products?codes=CODE1,CODE2
+```
+
+Returns matching products as an array.
