@@ -8,6 +8,8 @@ The project contains both a back-end and front-end application, each one in thei
 
 The project uses MongoDb as it's main database/data storage
 
+> Alternatively, you can run the project locally, using local json files, you just need to change to the **no-db-host branch**
+
 ### Built With
 
 <p align="left">
