@@ -8,6 +8,7 @@ The project contains both a back-end and front-end application, each one in thei
 
 The project uses local json as it's main database/data storage
 
+
 ### Built With
 
 <p align="left">
